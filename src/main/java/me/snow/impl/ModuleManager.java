@@ -2,6 +2,7 @@ package me.snow.impl;
 
 import me.snow.Crackton;
 import me.snow.config.CracktonConfig;
+import me.snow.impl.player.Fastplace;
 import me.snow.notifications.NotificationManager;
 import me.snow.utils.InventoryUtils;
 import net.minecraft.item.ItemStack;
@@ -31,6 +32,7 @@ public class ModuleManager {
 
         ModuleManager.registerModule(new ExampleModule());
         ModuleManager.registerModule(new HoverTotem());
+        ModuleManager.registerModule(new Fastplace());
 
 
         initialized = true;
@@ -110,7 +112,7 @@ public class ModuleManager {
     public static boolean toggleModule(String name) {
         Module module = getModule(name);
         if (module != null) {
-            module.toggle();
+            module.toggle(module);
             updateEnabledModulesList();
             return true;
         }

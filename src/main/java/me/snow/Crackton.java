@@ -48,16 +48,10 @@ public class Crackton implements ClientModInitializer {
 			if (KeyBindings.QUICK_TOGGLE_FEATURE1.wasPressed()) {
 				// Basic notifications
 
-				ModuleManager.enableModule("Hover Totem");
+				ModuleManager.toggleModule("FastPlace");
 			}
 
-			if (KeyBindings.QUICK_TOGGLE_FEATURE2.wasPressed()) {
-				//ModuleManager.quickToggleFeature2();
-			}
 
-			if (KeyBindings.QUICK_TOGGLE_DEBUG.wasPressed()) {
-			//	ModuleManager.quickToggleDebug();
-			}
 
 			// Process per-tick features
 			//ModuleManager.onClientTick();

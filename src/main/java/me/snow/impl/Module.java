@@ -55,8 +55,9 @@ public abstract class Module {
         }
     }
 
-    public void toggle() {
-        setEnabled(!enabled);
+    public void toggle(Module mod) {
+        mod.setEnabled(!mod.enabled);
+        // Remove the manual onEnable()/onDisable() calls since setEnabled() already handles them
     }
 
     protected void notifyUser(String message) {

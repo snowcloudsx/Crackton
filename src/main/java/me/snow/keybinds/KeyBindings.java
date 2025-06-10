@@ -13,31 +13,19 @@ public class KeyBindings {
 
     public static void register() {
         OPEN_GUI = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-                "key.crackton.open_gui",
+                "GUI",
                 InputUtil.Type.KEYSYM,
                 GLFW.GLFW_KEY_RIGHT_SHIFT,
-                "category.crackton"
+                "crackton"
         ));
 
         QUICK_TOGGLE_FEATURE1 = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-                "key.crackton.toggle_feature1",
+                "Current Debug",
                 InputUtil.Type.KEYSYM,
                 GLFW.GLFW_KEY_M, // No default key
-                "category.crackton"
+                "crackton"
         ));
 
-        QUICK_TOGGLE_FEATURE2 = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-                "key.crackton.toggle_feature2",
-                InputUtil.Type.KEYSYM,
-                GLFW.GLFW_KEY_UNKNOWN, // No default key
-                "category.crackton"
-        ));
 
-        QUICK_TOGGLE_DEBUG = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-                "key.crackton.toggle_debug",
-                InputUtil.Type.KEYSYM,
-                GLFW.GLFW_KEY_UNKNOWN, // No default key
-                "category.crackton"
-        ));
     }
 }

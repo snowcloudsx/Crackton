@@ -169,7 +169,7 @@ public class CracktonConfigScreen extends Screen {
         public boolean mouseClicked(double mouseX, double mouseY, int button) {
             if (mouseX >= 0 && mouseX <= 160 && mouseY >= 0 && mouseY <= 16) {
                 if (button == 0) {
-                    module.toggle();
+                    ModuleManager.toggleModule(module.getName());
                     return true;
                 } else if (button == 1) {
                     submenuVisibility.put(module.getName(), !submenuVisibility.get(module.getName()));
