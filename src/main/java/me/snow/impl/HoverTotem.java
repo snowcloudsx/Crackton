@@ -1,5 +1,6 @@
 package me.snow.impl;
 
+import me.snow.impl.settings.NumberSetting;
 import me.snow.mixin.HandledScreenAccessor;
 import me.snow.notifications.NotificationManager;
 import net.minecraft.client.MinecraftClient;
@@ -16,6 +17,7 @@ import java.util.concurrent.TimeUnit;
 
 public class HoverTotem extends Module {
 
+    private NumberSetting EquipDelay;
     private static final int DELAY_TICKS = 10;
     private int delayCounter = 0;
     private final Random random = new Random();
@@ -30,6 +32,11 @@ public class HoverTotem extends Module {
     @Override
     public void onEnable() {
         delayCounter = 0;
+    }
+
+    @Override
+    protected void initSettings() {
+        EquipDelay = addNumberSetting("Equip Delay", "Sets the Delay before a totem is equipped (ms)", 60, 1, 160);
     }
 
     @Override
@@ -53,15 +60,17 @@ public class HoverTotem extends Module {
 
     @Override
     public void onTick() {
-        if (!this.isEnabled()) return; // Fixed logic - return if NOT enabled
+        if (!this.isEnabled()) return;
 
         if (delayCounter > 0) {
             delayCounter--;
             return;
         }
+
         if (!(mc.currentScreen instanceof HandledScreen<?> screen)) return;
         if (mc.player == null || mc.interactionManager == null) return;
 
+        // Check if offhand is empty (allowing the totem to be placed)
         if (!mc.player.getOffHandStack().isEmpty()) return;
 
         Slot hoveredSlot = ((HandledScreenAccessor)(Object)screen).getFocusedSlot();
@@ -76,20 +85,36 @@ public class HoverTotem extends Module {
 
     private void moveHoveredItemToOffhand(int fromSlot) {
         int syncId = mc.player.currentScreenHandler.syncId;
+        int delay1;
+
+        // Calculate delay
+        if (EquipDelay.getIntValue() == 60) {
+            delay1 = 100 + random.nextInt(76); // 100 + (0-75) = 100-175ms
+
+        } else {
+            delay1 = EquipDelay.getIntValue();
+
+        }
 
         // Step 1: Pickup hovered item
         mc.interactionManager.clickSlot(syncId, fromSlot, 0, SlotActionType.PICKUP, mc.player);
 
-        // Random delay between 100-175ms before placing in offhand
-        int delay1 = 100 + random.nextInt(76); // 100 + (0-75) = 100-175ms
+        // Random delay before placing in offhand
         scheduler.schedule(() -> {
             if (!this.isEnabled() || mc.player == null || mc.interactionManager == null) return;
 
-            // Step 2: Place into offhand (slot 45)
+            // Step 2: Place into offhand (slot 40 - this is the correct offhand slot)
             mc.interactionManager.clickSlot(syncId, 45, 0, SlotActionType.PICKUP, mc.player);
 
-            // Random delay between 100-175ms before putting back remaining items
-            int delay2 = 100 + random.nextInt(76);
+            // Random delay before putting back remaining items
+            int delay2;
+
+            if (EquipDelay.getIntValue() == 60) {
+                delay2 = 100 + random.nextInt(76); // 100 + (0-75) = 100-175ms
+
+            } else {
+                delay2 = EquipDelay.getIntValue();
+            }
             scheduler.schedule(() -> {
                 if (!this.isEnabled() || mc.player == null || mc.interactionManager == null) return;
 

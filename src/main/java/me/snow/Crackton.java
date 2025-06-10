@@ -1,16 +1,13 @@
 package me.snow;
 
 import me.snow.config.CracktonConfig;
-import me.snow.impl.ExampleModule;
+import me.snow.gui.hud.HudManager;
 import me.snow.impl.ModuleManager;
-import me.snow.gui.CracktonConfigScreen;
+import me.snow.gui.GUI;
 import me.snow.keybinds.KeyBindings;
-import me.snow.notifications.NotificationManager;
-import me.snow.utils.InventoryUtils;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
+import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,41 +17,33 @@ public class Crackton implements ClientModInitializer {
 
 	@Override
 	public void onInitializeClient() {
-
-
 		LOGGER.info("Crackton Initialized!");
 
-		// Initialize configuration
+		// Initialize components
 		CracktonConfig.init();
-
-		// Initialize features manager
 		ModuleManager.init();
-
-		// Register keybindings
 		KeyBindings.register();
+		HudManager.init();
+
+		// Register HUD rendering
+		// Register HUD rendering
+		HudRenderCallback.EVENT.register((drawContext, tickCounter) -> {
+			float tickDelta = tickCounter.getTickDelta(true); // NEW: Extract tickDelta from RenderTickCounter
+			HudManager.getInstance().render(drawContext, tickDelta);
+		});
+
 
 		// Register client tick event
 		ClientTickEvents.END_CLIENT_TICK.register(client -> {
-			// Handle GUI keybinding
-
 			ModuleManager.onClientTick();
 
-
 			if (KeyBindings.OPEN_GUI.wasPressed()) {
-				client.setScreen(new CracktonConfigScreen(client.currentScreen));
+				client.setScreen(new GUI(client.currentScreen));
 			}
 
-			// Handle quick toggle keybindings
 			if (KeyBindings.QUICK_TOGGLE_FEATURE1.wasPressed()) {
-				// Basic notifications
-
 				ModuleManager.toggleModule("FastPlace");
 			}
-
-
-
-			// Process per-tick features
-			//ModuleManager.onClientTick();
 		});
 	}
 }

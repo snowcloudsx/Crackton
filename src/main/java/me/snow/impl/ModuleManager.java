@@ -123,7 +123,6 @@ public class ModuleManager {
      * Called every client tick
      */
     public static void onClientTick() {
-        NotificationManager.sendActionBar("Tick");
         for (Module module : enabledModules) {
             try {
                 module.onTick();
