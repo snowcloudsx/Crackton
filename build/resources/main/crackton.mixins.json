@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "package": "me.snow.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "HandledScreenAccessor"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "client": [
+    "FastplaceAccessor"
+  ]
+}

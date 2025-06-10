@@ -1,0 +1,20 @@
+{
+  "mappings": {
+    "me/snow/mixin/FastplaceAccessor": {
+      "itemUseCooldown": "field_1752:I"
+    },
+    "me/snow/mixin/HandledScreenAccessor": {
+      "focusedSlot": "field_2787:Lnet/minecraft/class_1735;"
+    }
+  },
+  "data": {
+    "named:intermediary": {
+      "me/snow/mixin/FastplaceAccessor": {
+        "itemUseCooldown": "field_1752:I"
+      },
+      "me/snow/mixin/HandledScreenAccessor": {
+        "focusedSlot": "field_2787:Lnet/minecraft/class_1735;"
+      }
+    }
+  }
+}
