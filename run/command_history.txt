@@ -1,2 +1,4 @@
 /gamemode creative
 /gamemode survival
+/time set day
+/gamemode creative

@@ -1,8 +1,9 @@
-package me.snow.impl;
+package me.snow.impl.combat;
 
+import me.snow.impl.Category;
+import me.snow.impl.Module;
 import me.snow.impl.settings.NumberSetting;
 import me.snow.mixin.HandledScreenAccessor;
-import me.snow.notifications.NotificationManager;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.item.ItemStack;
@@ -26,7 +27,7 @@ public class HoverTotem extends Module {
     private final MinecraftClient mc = MinecraftClient.getInstance();
 
     public HoverTotem() {
-        super("Hover Totem", "Offhands a hovered totem in inventory", Category.CLIENT);
+        super("Hover Totem", "Offhands a hovered totem in inventory", Category.COMBAT);
     }
 
     @Override

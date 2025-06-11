@@ -2,11 +2,10 @@ package me.snow.impl;
 
 import me.snow.Crackton;
 import me.snow.config.CracktonConfig;
+import me.snow.impl.Render.PlayerESP;
+import me.snow.impl.combat.HoverTotem;
+import me.snow.impl.combat.TriggerBot;
 import me.snow.impl.player.Fastplace;
-import me.snow.notifications.NotificationManager;
-import me.snow.utils.InventoryUtils;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
@@ -30,9 +29,10 @@ public class ModuleManager {
 
         // Load initial config
 
-        ModuleManager.registerModule(new ExampleModule());
+        ModuleManager.registerModule(new TriggerBot());
         ModuleManager.registerModule(new HoverTotem());
         ModuleManager.registerModule(new Fastplace());
+        ModuleManager.registerModule(new PlayerESP());
 
 
         initialized = true;

@@ -10,7 +10,7 @@ public class Fastplace extends Module {
     private final MinecraftClient mc = MinecraftClient.getInstance();
 
     public Fastplace() {
-        super("FastPlace", "Place Blocks Fast", Category.CLIENT);
+        super("FastPlace", "Place Blocks Fast", Category.PLAYER);
     }
 
     @Override
