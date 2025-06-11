@@ -2,9 +2,15 @@ package me.snow.impl;
 
 import me.snow.Crackton;
 import me.snow.config.CracktonConfig;
+import me.snow.impl.Render.AntiTrap;
+import me.snow.impl.Render.BlockOutline;
 import me.snow.impl.Render.PlayerESP;
+import me.snow.impl.Render.TargetHUD;
 import me.snow.impl.combat.HoverTotem;
 import me.snow.impl.combat.TriggerBot;
+import me.snow.impl.misc.BoneDropper;
+import me.snow.impl.misc.FakePlayer;
+import me.snow.impl.player.AutoFirework;
 import me.snow.impl.player.Fastplace;
 
 import java.util.*;
@@ -33,7 +39,12 @@ public class ModuleManager {
         ModuleManager.registerModule(new HoverTotem());
         ModuleManager.registerModule(new Fastplace());
         ModuleManager.registerModule(new PlayerESP());
-
+        ModuleManager.registerModule(new AntiTrap());
+        ModuleManager.registerModule(new BoneDropper());
+        ModuleManager.registerModule(new AutoFirework());
+        ModuleManager.registerModule(new TargetHUD());
+        ModuleManager.registerModule(new BlockOutline());
+        ModuleManager.registerModule(new FakePlayer());
 
         initialized = true;
         Crackton.LOGGER.info("Module Manager initialized with " + modules.size() + " modules");

@@ -2,3 +2,22 @@
 /gamemode survival
 /time set day
 /gamemode creative
+/gamemode survival
+/gamemode creative
+/gamemode survival
+/gamemode creative
+/gamemode survival
+/gamemode creative
+/gamemode survival
+/gamemode creative
+/gamemode survival
+/tp 0 ~ ~
+/tp 0 ~ 0
+/gamemode creative
+/gamemode survival
+/gamemode creative
+/gamemode survival
+/gamemode creative
+/gamemode spectator
+/gamemode survival
+/gamemode creative

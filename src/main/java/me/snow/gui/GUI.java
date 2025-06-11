@@ -34,7 +34,7 @@ public class GUI extends Screen {
         int x = 30;
         int y = 40;
 
-        for (Category category : Category.values()) {
+            for (Category category : Category.values()) {
             List<Component> toggles = new ArrayList<>();
 
             for (Module module : category.getModules()) {
