@@ -2,9 +2,11 @@ package me.snow.impl;
 
 import me.snow.Crackton;
 import me.snow.config.CracktonConfig;
+import me.snow.impl.Render.AntiTrap;
 import me.snow.impl.Render.PlayerESP;
 import me.snow.impl.combat.HoverTotem;
 import me.snow.impl.combat.TriggerBot;
+import me.snow.impl.misc.BoneDropper;
 import me.snow.impl.player.Fastplace;
 
 import java.util.*;
@@ -33,6 +35,8 @@ public class ModuleManager {
         ModuleManager.registerModule(new HoverTotem());
         ModuleManager.registerModule(new Fastplace());
         ModuleManager.registerModule(new PlayerESP());
+        ModuleManager.registerModule(new AntiTrap());
+        ModuleManager.registerModule(new BoneDropper());
 
 
         initialized = true;

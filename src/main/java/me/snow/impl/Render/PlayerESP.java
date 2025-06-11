@@ -60,7 +60,7 @@ public class PlayerESP extends Module {
     );
 
     public PlayerESP() {
-        super("PlayerESP", "Shows the location of players", Category.PLAYER);
+        super("PlayerESP", "Shows the location of players", Category.RENDER);
 
         WorldRenderEvents.AFTER_ENTITIES.register(context -> {
             if (!this.isEnabled() || mc.player == null || mc.world == null) return;

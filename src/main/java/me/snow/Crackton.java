@@ -10,6 +10,8 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.minecraft.client.network.OtherClientPlayerEntity;
+import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.server.world.ServerWorld;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,6 +20,8 @@ import java.util.UUID;
 public class Crackton implements ClientModInitializer {
 	public static final String MOD_ID = "crackton";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+	static OtherClientPlayerEntity fakePlayer = null;
+
 
 	@Override
 	public void onInitializeClient() {
@@ -44,14 +48,30 @@ public class Crackton implements ClientModInitializer {
 			ModuleManager.onClientTick();
 
 			/*
-			if (client.world != null && client.player != null && client.player.age == 10) {
-				GameProfile profile = new GameProfile(UUID.randomUUID(), "FakePlayer");
-				OtherClientPlayerEntity fakePlayer = new OtherClientPlayerEntity(
-						client.world,
-						profile
-				);
-				fakePlayer.updatePosition(client.player.getX() + 2, client.player.getY(), client.player.getZ());
-				client.world.addEntity(fakePlayer); // -100 = arbitrary fake ID
+			if (client.world != null && client.player != null && fakePlayer == null) {
+				GameProfile profile = new GameProfile(UUID.randomUUID(), "Target");
+				fakePlayer = new OtherClientPlayerEntity(client.world, profile) {
+					public boolean damage(DamageSource source, float amount) {
+						this.timeUntilRegen = 10;
+						setHealth(getHealth() - amount);
+						playHurtSound(source);
+						return true;
+					}
+					public boolean canHit() { return true; }
+					public boolean canTakeDamage() { return true; }
+					public boolean isInvulnerableTo(DamageSource source) { return false; }
+					public boolean isPushable() { return true; }
+					public boolean canBeHitByProjectile() { return true; }
+					public boolean isAttackable() { return true; }
+					public boolean shouldRender() { return true; }
+				};
+				fakePlayer.setHealth(20f);
+				fakePlayer.setPosition(client.player.getX() + 2, client.player.getY(), client.player.getZ());
+				fakePlayer.setInvulnerable(false);
+				fakePlayer.setInvisible(false);
+				fakePlayer.calculateDimensions();
+				fakePlayer.setBoundingBox(fakePlayer.getType().getDimensions().getBoxAt(fakePlayer.getPos()));
+				client.world.addEntity(fakePlayer);
 			}
 			*/
 

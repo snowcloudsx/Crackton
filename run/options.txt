@@ -53,7 +53,7 @@ highContrastBlockOutline:false
 narratorHotkey:true
 resourcePacks:["fabric"]
 incompatibleResourcePacks:[]
-lastServer:
+lastServer:anticheat-test.com
 lang:en_us
 chatVisibility:0
 chatOpacity:1.0

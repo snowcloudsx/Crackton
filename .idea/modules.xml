@@ -4,8 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Crackton.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Crackton.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Crackton.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Crackton.test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/me.snow.Crackton.main.iml" filepath="$PROJECT_DIR$/.idea/modules/me.snow.Crackton.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/me.snow.Crackton.test.iml" filepath="$PROJECT_DIR$/.idea/modules/me.snow.Crackton.test.iml" />
     </modules>
   </component>
 </project>

@@ -9,7 +9,8 @@ public enum Category {
     DONUT,
     MISC,
     COMBAT,
-    CLIENT;
+    CLIENT,
+    RENDER;
 
     private final List<Module> modules = new ArrayList<>();
 

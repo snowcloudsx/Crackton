@@ -49,12 +49,17 @@
     <remote-repository>
       <option name="id" value="LoomGlobalMinecraft" />
       <option name="name" value="LoomGlobalMinecraft" />
-      <option name="url" value="file:/$USER_HOME$/.gradle/caches/fabric-loom/minecraftMaven/" />
+      <option name="url" value="file:/$PROJECT_DIR$/../.gradle/caches/fabric-loom/minecraftMaven/" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="LoomLocalMinecraft" />
       <option name="name" value="LoomLocalMinecraft" />
       <option name="url" value="file:/$PROJECT_DIR$/.gradle/loom-cache/minecraftMaven/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="DevAuth" />
+      <option name="name" value="DevAuth" />
+      <option name="url" value="https://pkgs.dev.azure.com/djtheredstoner/DevAuth/_packaging/public/maven/v1" />
     </remote-repository>
   </component>
 </project>
