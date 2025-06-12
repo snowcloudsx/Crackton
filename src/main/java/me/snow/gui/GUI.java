@@ -6,6 +6,7 @@ import me.snow.gui.widgets.Panel;
 import me.snow.impl.Category;
 import me.snow.impl.Module;
 import me.snow.impl.ModuleManager;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.Text;
@@ -29,7 +30,9 @@ public class GUI extends Screen {
 
     @Override
     protected void init() {
-        panels.clear(); // Clear existing panels first
+        panels.clear(); // Clear existing panels firsT
+
+
 
         int x = 30;
         int y = 40;
